@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewelry Shop Reviews</title>
+    <link rel="stylesheet" href="review.css">
+    <script>
+        // Function to handle form submission
+        function submitReview(event) {
+            event.preventDefault();  // Prevent form from reloading the page
+
+            // Get values from the form
+            const name = document.getElementById('name').value;
+            const rating = document.getElementById('rating').value;
+            const reviewText = document.getElementById('review').value;
+
+            // Create a new review element
+            const reviewSection = document.querySelector('.review-section');
+
+            const newReview = document.createElement('div');
+            newReview.classList.add('review');
+
+            // Create the content for the new review
+            newReview.innerHTML = `
+                <h3>${name}</h3>
+                <p class="rating">${'⭐'.repeat(rating)}</p>
+                <p>${reviewText}</p>
+            `;
+
+            // Append the new review to the review section
+            reviewSection.appendChild(newReview);
+
+            // Clear the form fields
+            document.getElementById('name').value = '';
+            document.getElementById('rating').value = '5';
+            document.getElementById('review').value = '';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Jewelry Shop Reviews</h1>
+    </header>
+    <main>
+        <section class="review-section">
+            <h2>Customer Reviews</h2>
+            <div class="review">
+                <h3>sanjivani pore</h3>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <p>Absolutely love my new necklace! Great quality and fast shipping.</p>
+            </div>
+            <div class="review">
+                <h3>monali lawate</h3>
+                <p class="rating">⭐⭐⭐⭐</p>
+                <p>The ring I bought is stunning! However, it took a bit longer to arrive than expected.</p>
+            </div>
+                  </section>
+        <section class="review-form">
+            <h2>Leave a Review</h2>
+            <form onsubmit="submitReview(event)">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="rating">Rating:</label>
+                <select id="rating" name="rating" required>
+                    <option value="5">⭐⭐⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="1">⭐</option>
+                </select>
+                
+                <label for="review">Review:</label>
+                <textarea id="review" name="review" rows="4" required></textarea>
+                
+                <button type="submit">Submit Review</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Jewelry Shop. All rights reserved.</p>
+    </footer>
+</body>
+</html>
